@@ -1,0 +1,71 @@
+body {
+    background-color: #FFFFFF;
+}
+
+.nav-div {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-left: 10%;
+    width: 100%;
+    overflow-x: auto;
+    background-color: #FFFFFF;
+}
+
+.link-div {
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 25px;
+    color: rgb(163, 171, 179);
+    font-weight: 400;
+}
+
+.link-div:link {
+    text-decoration: none;
+}
+
+.link-div:visited {
+    text-decoration: none;
+}
+
+.link-div:hover {
+    text-decoration: none;
+    color: #212121;
+}
+
+.link-div:active {
+    text-decoration: none;
+    color: #212121;
+}
+
+.active {
+    color: #212121;
+    border-bottom: solid 2px #D32F2F;
+}
+
+.pos-center-div {
+    margin-left: 10%;
+    width: 80%;
+    margin-right: 10%;
+}
+
+.input-text {
+    border: solid 0.5px rgb(163, 171, 179);
+    border-left: solid 3.5px #D32F2F;
+    height: 45px;
+    width: 300px;
+    font-size: 20px;
+    margin-top: 15px;
+    font-weight: 200;
+    padding-left: 10px;
+}
+
+.submit-button {
+    background-color: #D32F2F;
+    color: #fafafa;
+    width: 300px;
+    height: 45px;
+    font-size: 20px;
+    border: 0px;
+    font-weight: 200;
+}

@@ -1,0 +1,46 @@
+ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    margin-left: 0px;
+    padding-left: 2px;
+    height: 25px;
+    border: solid 0.1px rgb(163, 171, 179);
+    border-left: 1.5px solid #D32F2F;
+    font-size: 15px;
+    padding-top: 2px;
+    margin-bottom: 5px;
+}
+
+select {
+    border: solid 1px #000000;
+    background-color: #FFFFFF;
+}
+
+.form-control {
+    border: solid 1px #424242;
+    height: 25px;
+    width: 25px;
+}
+
+.form-control:focus {
+    border: solid 1px #000000;
+}
+
+.input-group-addon {
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 600;
+    height: 10px !important;
+    background-color: #000000;
+    border: 1px solid #424242;
+}
+
+.form-group {
+    width: 300px;
+    float: left;
+}
