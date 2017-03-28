@@ -56,10 +56,10 @@
         for ($i = 0; $i < count($claId); $i++) {
             unset($echoArrayWeek);
 	        for ($j = 0; $j < 5; $j++) { 
-		        $tmpSQL = 'SELECT * FROM record WHERE rcrd_classId = '.$claId[$i].' AND  DATE_FORMAT(rcrdScoreTime,"%U") = DATE_FORMAT(now(),"%U") AND DATE_FORMAT(rcrdScoreTime,"%w") = '.($j+1);
+		        $tmpSQL = 'SELECT sum(rcrdScore) FROM record WHERE rcrd_classId = '.$claId[$i].' AND  DATE_FORMAT(rcrdScoreTime,"%U") = DATE_FORMAT(now(),"%U") AND DATE_FORMAT(rcrdScoreTime,"%w") = '.($j+1);
                 $dbRowCollect = mysqli_query(dbManager::getConnection(), $tmpSQL);
                 $dbRow = mysqli_fetch_array($dbRowCollect);
-                $echoArrayWeek[] = $dbRow["rcrdScore"];                    
+                $echoArrayWeek[] = $dbRow[0];                    
 	        }
             $tmpSQL = 'SELECT sum(rcrdScore) FROM record WHERE rcrd_classId = '.$claId[$i].' AND  DATE_FORMAT(rcrdScoreTime,"%U") = DATE_FORMAT(now(),"%U")';
             $dbRowCollect = mysqli_query(dbManager::getConnection(), $tmpSQL);
