@@ -49,15 +49,26 @@
         $claId  = dbManager::getArray("class", "clsId");
         $claName= dbManager::getArray("class", "clsName");
 
-        echo '<div id="WeekStat"><ul>';
+        echo '<div id="WeekStat">';
+	require_once('srvr/table.php');
+	table::echoHead(array("Mon","Tue","Wed","Thu","Fri","Sum"));
+
         for ($i = 0; $i < count($claId); $i++) {
-            echo "<li>".$claName[$i].":";
-            $tmpSQL = 'SELECT sum(rcrdScore) FROM record WHERE rcrd_classId = '.$claId[$i].' AND  DATE_FORMAT(rcrdScoreTime,"%U")= DATE_FORMAT(now(),"%U")';
+            unset($echoArrayWeek);
+	        for ($j = 0; $j < 5; $j++) { 
+		        $tmpSQL = 'SELECT * FROM record WHERE rcrd_classId = '.$claId[$i].' AND  DATE_FORMAT(rcrdScoreTime,"%U") = DATE_FORMAT(now(),"%U") AND DATE_FORMAT(rcrdScoreTime,"%w") = '.($j+1);
+                $dbRowCollect = mysqli_query(dbManager::getConnection(), $tmpSQL);
+                $dbRow = mysqli_fetch_array($dbRowCollect);
+                $echoArrayWeek[] = $dbRow["rcrdScore"];                    
+	        }
+            $tmpSQL = 'SELECT sum(rcrdScore) FROM record WHERE rcrd_classId = '.$claId[$i].' AND  DATE_FORMAT(rcrdScoreTime,"%U") = DATE_FORMAT(now(),"%U")';
             $dbRowCollect = mysqli_query(dbManager::getConnection(), $tmpSQL);
             $dbRow = mysqli_fetch_array($dbRowCollect);
-            echo $dbRow[0]."</li>";
+            $echoArrayWeek[] = $dbRow[0];
+	        table::echoRow($claName[$i], $echoArrayWeek);
         }
-        echo '</ul></div>';
+	table::echoEnd();
+        echo '</div>';
 
         echo '<div style="display:none" id="MonthStat"><ul>';
         for ($i = 0; $i < count($claId); $i++) {
