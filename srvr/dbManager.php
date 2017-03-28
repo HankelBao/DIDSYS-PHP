@@ -6,6 +6,7 @@ class dbManager {
             die("Could not connect to the databse, please contact Hankel G1C4(c)");
 
         $database = mysqli_select_db($connection,'did');
+        mysqli_query($connection,"SET NAMES 'UTF8'");
         return $connection;
     }
 

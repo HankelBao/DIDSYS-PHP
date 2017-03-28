@@ -2,7 +2,7 @@
 require_once('dbManager.php');
 class rel_scorerClass {
     public static function getClassIdByScorerId($scorerId) {
-        $tmpSQL = 'SELECT * FROM rel_scorerClass WHERE rsc_scorerId ='.$scorerId;
+        $tmpSQL = 'SELECT * FROM rel_scorerclass WHERE rsc_scorerId ='.$scorerId;
         $dbRowCollect = mysqli_query(dbManager::getConnection(), $tmpSQL);
         dbManager::checkResult($dbRowCollect);
 
